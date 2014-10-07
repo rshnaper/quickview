@@ -46,6 +46,15 @@ public interface IQuickView<T> extends IPageable {
      *
      */
     List<Item<T>> addItemsForNextPage();
+    
+    /**
+     * adds items/rows for previous page by appending them to the top of the repeater and also sets the previous page ,this method can called by any sequential items/rows navigator
+     * for example {@link com.aplombee.navigator.ItemsNavigatorBase} calls this method onClick,
+     * ItemsNavigatorBase is the base of {@link com.aplombee.navigator.AjaxItemsNavigator}.
+     *
+     *
+     */
+    List<Item<T>> addItemsForPreviousPage();
 
     }
 

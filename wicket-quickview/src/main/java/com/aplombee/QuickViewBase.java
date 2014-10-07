@@ -260,6 +260,26 @@ public abstract class QuickViewBase<T> extends RepeatingView implements IQuickVi
          }
        return components;
     }
+    
+	/**
+	 * Adds items by appending them to the start of the repeater
+	 * 
+	 * @param page
+	 * @return
+	 */
+	public List<Item<T>> addItemsForPreviousPage(final int page) {
+		int offset = page * getItemsPerRequest();
+		Iterator<IModel<T>> newModels = newModels(offset, itemsPerRequest);
+		Iterator<Item<T>> newIterator = reuseStrategy.addItems(
+				getRepeaterUtil().safeLongToInt(offset), factory(), newModels);
+		List<Item<T>> components = new ArrayList<Item<T>>();
+		while (newIterator.hasNext()) {
+			Item<T> temp = newIterator.next();
+			components.add(temp);
+			addAtStart(temp);
+		}
+		return components;
+	}
 
 
     /**
@@ -585,6 +605,23 @@ public abstract class QuickViewBase<T> extends RepeatingView implements IQuickVi
         return list;
     }
 
+    
+    /**
+     * {@inheritDoc}
+     */
+    public  List<Item<T>> addItemsForPreviousPage(){
+        List<Item<T>> list = new ArrayList<Item<T>>();
+        int current = getCurrentPage();
+
+        // page for which new items have to created
+
+        int previous = current -1;
+        if (previous >= 0) {
+            list = addItemsForPreviousPage(previous);
+           _setCurrentPage(previous);
+        }
+        return list;
+    }
 
     /**
      * {@inheritDoc}

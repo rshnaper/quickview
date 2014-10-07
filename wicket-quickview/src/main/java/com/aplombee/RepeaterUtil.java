@@ -227,7 +227,15 @@ public class RepeaterUtil implements  IRepeaterUtil{
      */
     @Override
     public String isComponentScrollBarAtBottom(MarkupContainer component) {
-        return String.format("QuickView.isComponentScrollBarAtBottom('%s');", component.getMarkupId());
+        return String.format("QuickView.isComponentScrollBarAtBottom('%s')", component.getMarkupId());
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String isComponentScrollBarAtTop(MarkupContainer component) {
+        return String.format("QuickView.isComponentScrollBarAtTop('%s')", component.getMarkupId());
     }
 
     /**

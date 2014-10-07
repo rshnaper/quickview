@@ -81,6 +81,13 @@ var QuickView = {
         return ($(el).prop("offsetHeight") + $(el).scrollTop() >= $(el).prop("scrollHeight"));
     },
     /**
+    returns true if the scrollbar of element with parameter id is moved to the top else it returns false
+    */
+   isComponentScrollBarAtTop: function(id) {
+       var el = $("#" + id);
+       return ($(el).scrollTop() == 0);
+   },
+    /**
      returns true if the scrollbar of the page is moved at the bottom else it returns false
      */
     isPageScrollBarAtBottom: function() {

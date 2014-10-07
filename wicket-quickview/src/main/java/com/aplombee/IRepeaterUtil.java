@@ -161,11 +161,19 @@ public interface IRepeaterUtil {
     public String isComponentScrollBarAtBottom(MarkupContainer component);
 
     /**
+     * js calls which calls methods that when fired returns true if component's navigation-bar is at the top
+     * @param component
+     * @return   js call string
+     */
+    public String isComponentScrollBarAtTop(MarkupContainer component);
+    
+    /**
      * js calls which calls methods that when fired returns true if page's navigation-bar is at the bottom
      * @param component
      * @return  js call string
      */
     public String isPageScrollBarAtBottom();
+    
 
      String showPageScrollBar();
     /**

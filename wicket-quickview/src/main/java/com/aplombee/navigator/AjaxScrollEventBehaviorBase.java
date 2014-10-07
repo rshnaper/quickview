@@ -55,4 +55,11 @@ public abstract class AjaxScrollEventBehaviorBase extends AjaxEventBehavior{
     public List<Item> addItemsForNextPage(IQuickView quickView) {
         return quickView.addItemsForNextPage();
     }
+    
+    public List<Item> addItemsForPreviousPage(IQuickView quickView) {
+    	if(quickView.getCurrentPage() > 0) {
+    		return quickView.addItemsForPreviousPage();
+    	}
+    	return null;
+    }
 }
