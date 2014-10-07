@@ -33,7 +33,7 @@ public class AbstractItemsNavigationStrategyTest {
     public void assertAddItems(IQuickReuseStrategy strategy){
         IModel model1= Mockito.mock(IModel.class);
         IModel model2=Mockito.mock(IModel.class);
-        Iterator newModels=Mockito.mock(Iterator.class);
+        Iterator<IModel<Object>> newModels=Mockito.mock(Iterator.class);
         Mockito.when(newModels.next()).thenReturn(model1).thenReturn(model2);
         Mockito.when(newModels.hasNext()).thenReturn(true).thenReturn(true).thenReturn(false);
         IItemFactory factory=Mockito.mock(IItemFactory.class);
