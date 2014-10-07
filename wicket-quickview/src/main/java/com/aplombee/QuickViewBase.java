@@ -272,12 +272,16 @@ public abstract class QuickViewBase<T> extends RepeatingView implements IQuickVi
 		Iterator<IModel<T>> newModels = newModels(offset, itemsPerRequest);
 		Iterator<Item<T>> newIterator = reuseStrategy.addItems(
 				getRepeaterUtil().safeLongToInt(offset), factory(), newModels);
+		
 		List<Item<T>> components = new ArrayList<Item<T>>();
 		while (newIterator.hasNext()) {
-			Item<T> temp = newIterator.next();
-			components.add(temp);
-			addAtStart(temp);
+			components.add(newIterator.next());
 		}
+		
+		for(int i=components.size()-1; i >= 0; i--) {
+			addAtStart(components.get(i));
+		}
+		
 		return components;
 	}
 
